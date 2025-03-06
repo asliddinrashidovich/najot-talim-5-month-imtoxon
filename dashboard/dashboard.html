@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <title>Dashboard</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/219/219986.png">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
-  <body class="relative">
+  <body class="relative overflow-x-hidden">
     <!-- header start -->
-    <header class="bg-[#F2EAE1] py-[20px] px-[50px] flex justify-end ">
+    <header class="bg-[#F2EAE1] py-[20px]  px-[50px] flex justify-end items-center fixed w-full z-[90]">
         <form>
             <label for="search" class=" items-center bg-white py-[10px] rounded-[8px] px-3">
                 <input type="text" placeholder="Search" class="outline-none">
@@ -22,87 +24,130 @@
     <!-- header end -->
 
     <!-- sidebar start -->
-    <section class="fixed w-[270px] bg-[#F2EAE1] h-[100vh] top-[0] pt-[18px] flex flex-col items-center" >
-        <h1 class="text-center text-[20px] leading-[100%] font-montserrat font-[700] mb-[54px]">Admin Students</h1>
+    <section class="fixed w-[270px] bg-[#F2EAE1] h-[100vh] top-[0] pt-[18px] flex flex-col items-center z-[99]" >
+        <h1 class=" text-[20px] border-l-[4px] translate-x-[-20px] border-[#F8D442] pl-[12px] leading-[100%] font-montserrat font-[700] mb-[54px]">Admin Students</h1>
         <div>
             <img src="/images/profile.svg" alt="user img" class="rounded-full mb-[20px]">
             <h2 class="text-center text-[17px] font-[700] leading-[100%] mb-[10px]">Karthi Madesh</h2>
             <h2 class="text-center text-[#FEAF00] text-[14px] font-[500] leading-[100%] mb-[63px]">Admin</h2>
-            <button class="flex py-[12px] bg-[#FEAF00] rounded-[4px] items-center gap-[15px] justify-center w-full">
-                <img src="/images/hat.svg" alt="hat">
-                <span>Students</span>
+            <button class="flex py-[12px] bg-[#FEAF00] rounded-[4px] items-center gap-[15px] justify-center w-full cursor-pointer btn">
+                <img src="/images/hat.svg" alt="hat" class="z-[20]">
+                <span class="z-[20]">Students</span>
             </button>
         </div>
         <div class="flex absolute bottom-[33px] gap-[23px]">
             <p class="text-[14px] font-[500] leading-[100%]">Logout</p>
-            <button>
+            <a href="/signin/signin.html">
                 <img src="/images/sign-out.svg" class="cursor-pointer" alt="logout">
-            </button>
+            </a>
         </div>
     </section>
     <!-- sidebar end -->
 
     <!-- students lists start -->
-    <section class="bg-[#555] min-h-[100vh] w-[calc(100%-270px)] ml-auto px-[30px]">
-        <div class="flex justify-between items-center py-[12px] border-b-[1px] border-[#E5E5E5]">
+    <section class="bg-[#F8F8F8] min-h-[100vh] overflow-y-scroll w-[calc(100vw-270px)] ml-auto px-[30px] pt-[64px] ">
+        <div class="flex justify-between items-center py-[12px] border-b-[1px] border-[#E5E5E5] ">
             <h1 class="text-[22px] leading-[100%] font-[700] ">Students List</h1>
             <div class="flex gap-[30px]">
                 <img src="/images/sort.svg" alt="sort" class="cursor-pointer">
-                <button class="uppercase py-[13px] px-[26px] bg-[#FEAF00] rounded-[4px] text-white cursor-pointer">ADD NEW STUDENT</button>
+                <button class="py-[13px] flex text-white px-[26px] bg-[#FEAF00] rounded-[4px] cursor-pointer btn">
+                    <span class="z-[20]">ADD NEW STUDENT</span>
+                </button>
             </div>
         </div>
-        <table class="border-separate border-spacing-y-[10px] w-full ">
-            <tr>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%] ml-[13px] py-[15px]"></th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Name</th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Email</th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Phone</th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Enroll Number</th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Date admission</th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
-                <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
-            </tr>
-            <tr>
-                <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
-                    <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
-                </td>
-                <td class="min-w-[150px] text-[14px] font-[400] leading-[100%] bg-white">Karthi</td>
-                <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
-                <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">7305477760</td>
-                <td class="min-w-[200px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
-                <td class="min-w-full text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
-                <td class="min-w-[30px] bg-white">
-                    <img src="/images/dot-bar.svg" alt="dot bar" class="w-[20px] mx-auto">
-                </td>
-                <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
-                    <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto">
-                </td>
-                <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white rounded-r-[8px]">
-                    <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto">
-                </td>
-            </tr>
-            <tr>
-                <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
-                    <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
-                </td>
-                <td class="min-w-[150px] text-[14px] font-[400] leading-[100%] bg-white">Karthi</td>
-                <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
-                <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">7305477760</td>
-                <td class="min-w-[200px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
-                <td class="min-w-full text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
-                <td class="min-w-[30px] bg-white">
-                    <img src="/images/dot-bar.svg" alt="dot bar" class="w-[20px] mx-auto">
-                </td>
-                <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
-                    <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto">
-                </td>
-                <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white rounded-r-[8px]">
-                    <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto">
-                </td>
-            </tr>
-        </table>
-    </section> 
+        <div class="overflow-x-auto overflow-y-hidden min-h-[calc(100vh-145px)]">
+            <table class="border-separate  border-spacing-y-[10px] w-full ">
+                <tr>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%] ml-[13px] py-[15px]"></th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Name</th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Email</th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Phone</th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Enroll Number</th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Date admission</th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                    <th class="text-start min-w-[] text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                </tr>
+                <tr>
+                    <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
+                        <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
+                    </td>
+                    <td class="min-w-[130px] text-[14px] font-[400] leading-[100%] bg-white">Karthi</td>
+                    <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
+                    <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">73054ssdf77760</td>
+                    <td class="min-w-[170px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
+                    <td class="min-w-[100px] text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
+                    <td class="min-w-[30px] bg-white " >
+                        <img src="/images/dot-bar.svg" alt="dot bar" class="w-[25px] mx-auto cursor-pointer translate-y-[50%]">
+                    </td>
+                    <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
+                        <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto cursor-pointer">
+                    </td>
+                    <td class="min-w-[50px] text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
+                        <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto cursor-pointer">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
+                        <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
+                    </td>
+                    <td class="min-w-[130px] text-[14px] font-[400] leading-[100%] bg-white">Karthasasi</td>
+                    <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
+                    <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">7305477760</td>
+                    <td class="min-w-[170px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
+                    <td class="min-w-[100px] text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
+                    <td class="min-w-[30px] bg-white " >
+                        <img src="/images/dot-bar.svg" alt="dot bar" class="w-[25px] mx-auto cursor-pointer translate-y-[50%]">
+                    </td>
+                    <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
+                        <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto cursor-pointer">
+                    </td>
+                    <td class="min-w-[50px] text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
+                        <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto cursor-pointer">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
+                        <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
+                    </td>
+                    <td class="min-w-[130px] text-[14px] font-[400] leading-[100%] bg-white">Karthasasi</td>
+                    <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
+                    <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">7305477760</td>
+                    <td class="min-w-[170px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
+                    <td class="min-w-[100px] text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
+                    <td class="min-w-[30px] bg-white " >
+                        <img src="/images/dot-bar.svg" alt="dot bar" class="w-[25px] mx-auto cursor-pointer translate-y-[50%]">
+                    </td>
+                    <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
+                        <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto cursor-pointer">
+                    </td>
+                    <td class="min-w-[50px] text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
+                        <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto cursor-pointer">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
+                        <img src="/images/profile.svg" class="object-cover w-[65px] h-[55px] rounded-[6px]" alt="profile">
+                    </td>
+                    <td class="min-w-[130px] text-[14px] font-[400] leading-[100%] bg-white">Karthasasi</td>
+                    <td class="min-w-[180px] text-[14px] font-[400] leading-[100%] bg-white">karthi@gmmail.com</td>
+                    <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">7305477760</td>
+                    <td class="min-w-[170px] text-[14px] font-[400] leading-[100%] bg-white">1234567305477760</td>
+                    <td class="min-w-[100px] text-[14px] font-[400] leading-[100%] bg-white">08-Dec, 2021</td>
+                    <td class="min-w-[30px] bg-white " >
+                        <img src="/images/dot-bar.svg" alt="dot bar" class="w-[25px] mx-auto cursor-pointer translate-y-[50%]">
+                    </td>
+                    <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
+                        <img src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto cursor-pointer">
+                    </td>
+                    <td class="min-w-[50px] text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
+                        <img src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto cursor-pointer">
+                    </td>
+                </tr>
+               
+            </table>
+        </div>
+    </section > 
     <!-- students lists end -->
   </body>
 </html>
