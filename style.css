@@ -3,7 +3,9 @@
 body {
   font-family: 'Montserrat', sans-serif;
 }
-
+* {
+  transition: all ease 0.4s; 
+}
 .btn {
   position: relative;
   transition: all linear 0.3s;
@@ -32,4 +34,8 @@ body {
 }
 .btn:active {
   transform: translateY(-7px);
+}
+
+#student_box {
+  transition: none;
 }

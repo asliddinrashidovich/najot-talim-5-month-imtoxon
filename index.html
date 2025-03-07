@@ -8,21 +8,41 @@
   </head>
   <body>
     <div class="w-[100vw] h-[100vh] bg-linear-45 from-[#FEAF01] to-[#F8D442] flex justify-center items-center">
-        <form class="max-w-[475px] w-full pt-[44px] h-[550px] px-[30px] rounded-[20px] bg-white">
+        <form id="form_signup" class="max-w-[475px] w-full py-[44px]  px-[30px] rounded-[20px] bg-white">
             <h1 class="font-monserat pl-[12px] w-[300px] mx-auto text-[32px] leading-[100%] font-montserrat font-[700] mb-[43px] border-l-[6px] border-[#F8D442]">Admin Students</h1>
             <h2 class="uppercase text-[22px] font-[600] leading-[100%] text-center mb-[9px]">Sign up</h2>
             <p class="text-[14px] text-center leading-[100%] font-[400] text-[#6C6C6C] mb-[50px]">Enter your credentials to access your account</p>
+            <div class="flex gap-[10px] mb-[20px]">
+              <label for="first_name" class="w-[50%]">
+                  <span class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] ">Enter your first name</span> 
+                  <input name="first_name" id="first_name" type="text" placeholder="Asliddin" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5]  mt-[10px]">
+                  <span id="message_firstname" class="text-[12px] hidden text-[red]">First name is required</span>
+              </label>
+              <label for="last_name" class="w-[50%]">
+                  <span class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] ">Enter your last name</span> 
+                  <input name="last_name" id="last_name" type="text" placeholder="Norboyev" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5]  mt-[10px]">
+                  <span id="message_lastname" class="text-[12px] hidden text-[red]">Last name is required</span>
+              </label>
+            </div>
             <label for="login">
-                <span class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] ">Enter new login</span> 
-                <input type="text" placeholder="Enter your login" class="border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5] mb-[20px] mt-[10px]">
+                <span class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] ">Enter your login</span> 
+                <input id="login" type="text" placeholder="Enter your login" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5] mt-[10px]">
+                <p id="message_login" class="text-[12px] mt-1 hidden text-[red]">Login is required</p>
             </label>
             <label for="password">
-                <span class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] mb-[10px]">Create new password</span> 
-                <input type="password" placeholder="Enter your password" class="border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5] mt-[10px] mb-[30px]">
+                <p class="font-[500] text-[14px] leading-[100%] text-[#6C6C6C] mt-[20px]">Enter your password</p> 
+                <input id="password" type="password" placeholder="password" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#E5E5E5] mt-[10px] ">
+                <span id="message_password" class="text-[12px] hidden text-[red]">Password is required</span>
             </label>
-            <button class="uppercase py-[14px] w-full bg-[#FEAF00] font-[500] text-[14px] leading-[100%] rounded-[4px] text-white cursor-pointer">SIGN UP</button>
+            <button class="uppercase py-[14px] w-full bg-[#FEAF00] font-[500] text-[14px] leading-[100%] rounded-[4px] text-white cursor-pointer mb-[12px] mt-[30px]">SIGN UP</button>
+            <div class="text-center text-[12px]">
+              <span>Already have an account?</span>
+              <a href="/signin/signin.html" class="text-blue-500 font-[400] underline text-[14px] leading-[100%]">Sign in</a>
+            </div>
         </form>
     </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
 
