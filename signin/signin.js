@@ -5,6 +5,8 @@ const errorSignin = document.getElementById('error_signin');
 
 let userData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : [];
 
+
+// ================== Sign IN codes ===============================
 formSignin.addEventListener('submit', (e) => {
     e.preventDefault();
 

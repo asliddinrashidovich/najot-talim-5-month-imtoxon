@@ -9,7 +9,7 @@ let students = localStorage.getItem('students') ? JSON.parse(localStorage.getIte
 
 
 
-// change img to profile 
+// ==========================change img to profile========================== 
 fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     
@@ -37,7 +37,7 @@ function setImage(url) {
     setRenderImage()
 }
 
-// render userData
+// ===========================render userData=======================
 function setRenderImage() {
     profilePicture.innerHTML = `
         <img id="preview" src=${selectUser.profileImg} alt="user img" class="rounded-full mb-[20px] w-[60px] h-[60px] lg:w-[200px] lg:h-[200px] object-cover mx-auto">
@@ -52,7 +52,8 @@ logOut.addEventListener("click", () => {
     window.close();
 });
 
-// sidebar to responsive
+//=================== sidebar to responsive====================
+
 const toLeft = document.getElementById('toLeft');
 const sidebar = document.getElementById('sidebar');
 const sidebarHeader = document.getElementById('siderbar_header');
@@ -103,7 +104,7 @@ toLeft.addEventListener('click', () => {
     }
 })
 
-// render user data
+// =========================render user data=============================
 const profileImage = document.getElementById('profileImage');
 const studentName = document.getElementById('studentName');
 const studentEmail = document.getElementById('studentEmail');

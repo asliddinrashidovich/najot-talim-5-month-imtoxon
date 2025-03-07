@@ -4,16 +4,18 @@ const dayEl = document.getElementById('day');
 const hourEl = document.getElementById('hours');
 const fileInput = document.getElementById("fileInput");
 const profilePicture = document.querySelector('#profilePicture');
+
 // add students elements
 const formCreate = document.getElementById('formCreate');
 const addStudentBtn = document.getElementById('add_student');
 const overlay = document.getElementById('overlay');
+
 // local datas
 let userData = JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localStorage.getItem('userData'))  : [];
 let selectUser = JSON.parse(localStorage.getItem('selectUser'));
 
 
-// time start 
+//================ Clock start ============================= 
 function setTime() {
     let now = new Date();
 
@@ -35,7 +37,7 @@ function setTime() {
 setInterval(() => setTime(), 1000) 
 
 
-// change img to profile 
+// ========================== change img to profile============================== 
 fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     
@@ -63,12 +65,13 @@ function setImage(url) {
     setRenderImage()
 }
 
-// render userData
 function setRenderImage() {
     profilePicture.innerHTML = `
         <img id="preview" src=${selectUser.profileImg} alt="user img" class="rounded-full mb-[20px] w-[60px] h-[60px] lg:w-[200px] lg:h-[200px] object-cover mx-auto">
     `
 }
+
+// ================================Render userData ====================================
 setRenderImage()
 
 userName.innerHTML = `${selectUser.firstName} ${selectUser.lastName}`
@@ -78,7 +81,7 @@ logOut.addEventListener("click", () => {
     window.close();
 });
 
-// sidebar to responsive
+//==================================== sidebar to responsive=============================
 const toLeft = document.getElementById('toLeft');
 const sidebar = document.getElementById('sidebar');
 const sidebarHeader = document.getElementById('siderbar_header');
@@ -129,7 +132,7 @@ toLeft.addEventListener('click', () => {
     }
 })
 
-// add student
+//========================= add student ==================================
 const messageName = document.getElementById('message_name');
 const messageEmail = document.getElementById('message_email');
 const messagePhone = document.getElementById('message_phone');
@@ -154,6 +157,7 @@ document.addEventListener('click', (e) => {
     }
 })
 
+// setting data to html by inner html and data mmapping
 function setStudentData() {
     userLists.innerHTML = '';
     students.map((student, i) => {
@@ -182,8 +186,7 @@ function setStudentData() {
 }
 setStudentData()
 
-
-
+// create strudent form submit event
 formCreate.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -250,7 +253,7 @@ formCreate.addEventListener('submit', (e) => {
     }
 })
 
-// delete student 
+//======================== Delete student ==================================
 function deleteStudent(id) {
     const deletedArr = students.filter((user, i) => {
         return i != id
@@ -261,7 +264,7 @@ function deleteStudent(id) {
     loadNoData()
 }
 
-// editStudent 
+// =================================== editStudent==================================== 
 const formEdit = document.getElementById('formEdit');
 const overlayEdit = document.getElementById('overlayEdit');
 const nameEdit = document.querySelector('#formEdit #name');
@@ -367,7 +370,7 @@ function editStudent(id) {
     editId = id
 }
 
-// sort students
+// =================================== sort students========================================
 const sortBtn = document.getElementById('sort_btn');
 
 sortBtn.addEventListener('click', ()=> {
@@ -377,7 +380,7 @@ sortBtn.addEventListener('click', ()=> {
     setStudentData()
 })
 
-// search students
+//========================================= search students========================================
 
 const searchInput = document.getElementById('search_input');
 searchInput.addEventListener('input', (e) => {
@@ -399,7 +402,7 @@ searchInput.addEventListener('input', (e) => {
     }
 })
 
-// go to student page
+//================================ go to student page ================================
 
 function goStudentPage(id) {
     const selectedStudent = students.filter((item, i) => {
