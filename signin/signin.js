@@ -58,7 +58,8 @@ formSignin.addEventListener('submit', (e) => {
             .then((res) => {
                 if(res) {
                     localStorage.setItem('selectUser', JSON.stringify(user))
-                    window.location.href = '/dashboard/dashboard.html'
+                    window.open('/dashboard/dashboard.html')
+                    window.close();
                 }
             })
             .catch((err) => {

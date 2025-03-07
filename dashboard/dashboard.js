@@ -66,7 +66,7 @@ function setImage(url) {
 // render userData
 function setRenderImage() {
     profilePicture.innerHTML = `
-        <img id="preview" src=${selectUser.profileImg} alt="user img" class="rounded-full mb-[20px] w-[200px] h-[200px] object-cover mx-auto">
+        <img id="preview" src=${selectUser.profileImg} alt="user img" class="rounded-full mb-[20px] w-[60px] h-[60px] lg:w-[200px] lg:h-[200px] object-cover mx-auto">
     `
 }
 setRenderImage()
@@ -107,6 +107,7 @@ toLeft.addEventListener('click', () => {
         adminText.style.fontSize = '10px'
         adminText.style.marginBottom = '10px'
         studentBox.style.width = 'calc(100vw - 80px)'
+        toLeft.style.rotate = '180deg'
         sidebarStylesCase = true
     } else {
         sidebar.style.width = '270px'
@@ -123,6 +124,7 @@ toLeft.addEventListener('click', () => {
         adminText.style.fontSize = '14px'
         adminText.style.marginBottom = '63px'
         studentBox.style.width = 'calc(100vw - 270px)'
+        toLeft.style.rotate = '0deg'
         sidebarStylesCase = false
     }
 })
@@ -156,22 +158,22 @@ function setStudentData() {
     userLists.innerHTML = '';
     students.map((student, i) => {
         userLists.innerHTML += `
-            <tr>
-                <td class="min-w-[100px] bg-white pl-[13px] py-[15px] rounded-l-[8px] mb-[20px]">
-                    <img src=${student.photo} class="object-cover w-[55px] h-[55px] rounded-[6px]" alt="profile">
+            <tr ondblclick="goStudentPage(${i})"> 
+                <td class="min-w-[100px] bg-white pl-[13px] py-[7px] md:py-[15px] rounded-l-[8px] mb-[20px]">
+                    <img src=${student.photo} class="object-cover w-[45px] md:w-[55px] h-[45px] md:h-[55px] rounded-[6px]" alt="profile">
                 </td>
-                <td class="min-w-[130px] text-[14px] font-[400] leading-[100%] bg-white">${student.name}</td>
-                <td class="min-w-[200px] text-[14px] font-[400] leading-[100%] bg-white">${student.email}</td>
-                <td class="min-w-[120px] text-[14px] font-[400] leading-[100%] bg-white">${student.phone}</td>
-                <td class="min-w-[140px] text-[14px] font-[400] leading-[100%] bg-white">${student.enroll}</td>
-                <td class="min-w-[100px]  text-[14px] font-[400] leading-[100%] bg-white">${student.time}</td>
+                <td id="searchName" class="min-w-[130px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">${student.name}</td>
+                <td class="min-w-[200px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">${student.email}</td>
+                <td class="min-w-[120px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">${student.phone}</td>
+                <td class="min-w-[140px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">${student.enroll}</td>
+                <td class="min-w-[130px] pr-[20px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">${student.time}</td>
                 <td class="min-w-[30px] bg-white " >
                     <img src="/images/dot-bar.svg" alt="dot bar" class="w-[25px] mx-auto cursor-pointer translate-y-[50%]">
                 </td>
-                <td class="min-w-[30px] text-[14px] font-[400] leading-[100%] bg-white">
+                <td class="min-w-[30px] text-[12px] md:text-[14px] font-[400] leading-[100%] bg-white">
                     <img onclick="editStudent(${i})" src="/images/edit.svg" alt="edit" class="w-[20px] mx-auto cursor-pointer">
                 </td>
-                <td class="min-w-[50px] text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
+                <td class="min-w-[50px] text-[12px] md:text-[14px] font-[400] pr-[20px] leading-[100%] bg-white rounded-r-[8px]">
                     <img onclick="deleteStudent(${i})" src="/images//delete.svg" alt="delete" class="w-[17px] mx-auto cursor-pointer">
                 </td>
             </tr>
@@ -362,16 +364,58 @@ function editStudent(id) {
             enrollEdit.value = item.enroll
         }
     })
-
     editId = id
 }
+
+// sort students
+const sortBtn = document.getElementById('sort_btn');
+
+sortBtn.addEventListener('click', ()=> {
+    const sortedArray = Array.from(students).sort((a, b) => a.name.localeCompare(b.name))
+    students = sortedArray;
+    setLocal()
+    setStudentData()
+})
+
+// search students
+
+const searchInput = document.getElementById('search_input');
+searchInput.addEventListener('input', (e) => {
+    document.querySelectorAll('tbody tr #searchName').forEach((item, i) => {
+        if(item.textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
+            item.parentElement.classList.remove('hidden')
+        } else {
+            item.parentElement.classList.add('hidden')
+        }
+    })
+    const dataHidden = document.querySelectorAll('tbody .hidden')
+    const imgNot = document.getElementById('notFound');
+    if(dataHidden.length == students.length) {
+        imgNot.classList.add('z-[123]')
+        imgNot.classList.remove('z-[-123]')
+    } else {
+        imgNot.classList.add('z-[-123]')
+        imgNot.classList.remove('z-[123]')
+    }
+})
+
+// go to student page
+
+function goStudentPage(id) {
+    const selectedStudent = students.filter((item, i) => {
+        return i == id;
+    })
+    sessionStorage.setItem('selectStudent', JSON.stringify(selectedStudent))
+    window.location.href = '/student/student.html'
+}
+
 
 // no data ? get image to screen
 function loadNoData() {
     if(!students.length) {
         userLists.innerHTML += `
             <div class="w-full absolute top-[100px] flex justify-center">
-                <img src="/images/no-users.jpg" alt="no data" class="w-[400px]">
+                <img src="/images/no-users.jpg" alt="no data" class="w-[200px] md:w-[400px]">
             </div>
         `
     }

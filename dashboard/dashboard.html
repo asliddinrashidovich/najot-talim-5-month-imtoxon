@@ -10,47 +10,50 @@
   </head>
   <body class="relative overflow-x-hidden">
     <!-- header start -->
-    <header class="bg-[#F2EAE1] py-[20px]  px-[50px] flex justify-end items-center fixed w-full z-[90]">
+    <header class="bg-[#F2EAE1] py-[20px] px-[50px] flex justify-end items-center fixed w-full z-[90]">
         <!-- this is clock -->
-        <div class="text-center flex gap-[30px] mr-[40px]">
-            <span id="hours" class="text-[17px]  leading-1">09 : 55 : 21</span> 
-            <span id="day" class="text-[17px]  leading-1">3 March, 2025</span>
+        <div class="text-center hidden sm:flex flex-col lg:flex-row gap-[10px] lg:gap-[30px] mr-[40px]">
+            <span id="hours" class=" text-[10px] lg:text-[17px]  leading-1">09 : 55 : 21</span> 
+            <span id="day" class="text-[10px] lg:text-[17px]  font-semibold leading-1">3 March, 2025</span>
         </div>
         <form>
             <label for="search" class=" items-center bg-white py-[10px] rounded-[8px] px-3">
-                <input type="text" placeholder="Search" class="outline-none">
-                <button ><img src="/images/search.svg" alt="search image" ></button>
+                <input id="search_input" type="text" placeholder="Search" class="outline-none w-[100px] md:w-auto">
+                <button>
+                    <img src="/images/search.svg" alt="search image" class="cursor-pointer">
+                </button>
             </label>
         </form>
-        <button class="ml-[27px] ">
-            <img src="/images/bell.svg" class="cursor-pointer" alt="bell">
+        <button class="ml-[27px] " >
+            <div class="hover:bg-[#888] my-auto w-[25px] rounded-full h-[25px] flex items-center justify-center">
+                <img src="/images/bell.svg" class="cursor-pointer" alt="bell">
+            </div>
         </button>
     </header>
     <!-- header end -->
 
     <!-- sidebar start -->
-    <section id="sidebar" class="fixed w-[270px] bg-[#F2EAE1] h-[100vh] top-[0] pt-[18px] flex flex-col items-center text-center z-[99]" >
-        <h1 id="siderbar_header" class=" text-[20px] border-l-[4px] translate-x-[-20px] border-[#F8D442] pl-[20px] leading-[100%] font-[700] mb-[54px]">Admin Students</h1>
-        <img src="/images/to-left.svg" alt="to left btn" class="absolute right-[-30px] cursor-pointer " id="toLeft">
+    <section id="sidebar" class="fixed w-[80px] lg:w-[270px] bg-[#F2EAE1] h-[100vh] top-[0] pt-[18px] flex flex-col items-center text-center z-[99]" >
+        <h1 id="siderbar_header" class="text-[10px] lg:text-[20px] border-l-[4px] translate-x-[-20px] border-[#F8D442] pl-[20px] leading-[100%] font-[700] mb-[30px] ml-[15px] lg:ml-0 lg:mb-[54px]">Admin Students</h1>
+        <img src="/images/to-left.svg" alt="to left btn" class="absolute right-[-30px] cursor-pointer rotate-[180deg] lg:rotate-[0deg]" id="toLeft">
         <div >
             <div class="relative">
-                <div id="profilePicture">
-                    <img id="preview" src="/images/profile-picture.png" alt="user img" class="rounded-full mb-[20px] w-[200px] h-[200px] object-cover mx-auto">
+                <div id="profilePicture" >
                 </div> 
-                <div id="setProfilePicture">
-                    <img  id="uploadBtn" src="/images/change-profile-picture.png" alt="change photo" class="w-[30px] absolute bottom-[13px] right-[13px] cursor-pointer">
+                <div id="setProfilePicture" class="cursor-pointer hidden lg:block">
+                    <img  id="uploadBtn" src="/images/change-profile-picture.png" alt="change photo" class="w-[30px] absolute bottom-[13px] right-[13px] ">
                     <input id="fileInput" type="file" class="w-[30px] w-[30px] absolute bottom-[13px] right-[13px] cursor-pointer opacity-[0]">
                 </div>
             </div>
-            <h2 id="user_name" class="text-center text-[17px] font-[700] leading-[100%] mb-[10px]">Karthi Madesh</h2>
-            <h2 class="text-center text-[#FEAF00] text-[14px] font-[500] leading-[100%] mb-[63px]" id="admin_text">Admin</h2>
-            <button class="flex py-[12px] bg-[#FEAF00] rounded-[4px] items-center gap-[15px] justify-center w-full mx-auto cursor-pointer btn" id="hat_btn">
+            <h2 id="user_name" class="text-center text-[10px] lg:text-[17px] font-[700] leading-[100%] mb-[10px]">Karthi Madesh</h2>
+            <h2 class="text-center text-[#FEAF00] text-[10px] lg:text-[14px] font-[500] leading-[100%] mb-[10px] lg:mb-[63px]" id="admin_text">Admin</h2>
+            <button class="flex py-[12px] bg-[#FEAF00] rounded-[4px] items-center gap-[15px] justify-center w-[40px] lg:w-full mx-auto cursor-pointer btn" id="hat_btn">
                 <img src="/images/hat.svg" alt="hat" class="z-[20]">
-                <span class="z-[20]" id="hat_text">Students</span>
+                <span class="z-[20] hidden  lg:flex" id="hat_text">Students</span>
             </button>
         </div>
         <div class="flex absolute bottom-[33px] gap-[23px]">
-            <p class="text-[14px] font-[500] leading-[100%] " id="logout_text">Logout</p>
+            <p class="text-[14px] font-[500] leading-[100%] lg:flex hidden" id="logout_text">Logout</p>
             <a href="/signin/signin.html" id="logout">
                 <img src="/images/sign-out.svg" class="cursor-pointer" alt="logout">
             </a>
@@ -59,38 +62,38 @@
     <!-- sidebar end -->
 
     <!-- add student start -->
-    <div id="overlay" class="overlay bg-[rgba(0 ,0,0, 1)] hidden absolute z-[101] t-0 l-0 r-0 b-0 w-full h-full flex justify-center items-center backdrop-blur-[3px]">
-        <form id="formCreate" class="max-w-[475px] w-full  py-[44px]  px-[30px]  rounded-[20px] bg-[#F2EAE1] shadow-xl">
-            <h2 class="uppercase text-[22px] font-[600] leading-[100%] text-center mb-[20px]">Create new student</h2>
+    <div id="overlay" class="overlay bg-[rgba(0 ,0,0, 4)] hidden  fixed z-[101] top-0 w-full h-[100vh] flex justify-center items-center backdrop-blur-[4px]">
+        <form id="formCreate" class="w-[300px] mx-[20px] my-[10px] lg:w-[475px] py-[20px] lg:py-[44px] px-[14px] lg:px-[30px]  rounded-[20px] bg-[#fff]" style="box-shadow: 0px 10px 10px 4px rgba(0, 0, 0, 0.6);">
+            <h2 class="uppercase text-[16px] lg:text-[22px] font-[600] leading-[100%] text-center mb-[10px] lg:mb-[20px]">Create new student</h2>
 
             <label for="name">
-              <span class="font-[500] text-[14px] leading-[100%]  ">Enter name</span> 
-              <input id="name" type="text" placeholder="name" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px]">
-              <p id="message_name" class="text-[12px] mt-1 hidden text-[red]">Name is required</p>
+              <span class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  ">Enter name</span> 
+              <input id="name" type="text" placeholder="name" class="outline-[green] border-[1px] text-[10px] lg:text-[12px] font-[400] rounded-[4px] p-[8px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px] lg:mt-[10px]">
+              <p id="message_name" class="text-[10px] md:text-[12px] mt-1 hidden text-[red]">Name is required</p>
             </label>
 
             <label for="email">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Enter email</p> 
-                <input id="email" type="email" placeholder="user@example.com" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_email" class="text-[12px] hidden text-[red]">Email is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  mt-[20px]">Enter email</p> 
+                <input id="email" type="email" placeholder="user@example.com" class="outline-[green] border-[1px] text-[10px] lg:text-[12px] font-[400] rounded-[4px] p-[8px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px] lg:mt-[10px] ">
+                <span id="message_email" class="text-[10px] md:text-[12px] hidden text-[red]">Email is required</span>
             </label>
 
             <label for="phone">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Enter phone number</p> 
-                <input id="phone" type="tel" placeholder="+998946092401" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_phone" class="text-[12px] hidden text-[red]">Phone number is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  mt-[20px]">Enter phone number</p> 
+                <input id="phone" type="tel" placeholder="+998946092401" class="outline-[green] border-[1px] text-[10px] lg:text-[12px] font-[400] rounded-[4px] p-[8px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px] lg:mt-[10px] ">
+                <span id="message_phone" class="text-[10px] md:text-[12px] hidden text-[red]">Phone number is required</span>
             </label>
 
             <label for="enroll">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Enter enroll number</p> 
-                <input id="enroll" type="number" placeholder="1234567305477760" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_enroll" class="text-[12px] hidden text-[red]">Enroll number is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  mt-[20px]">Enter enroll number</p> 
+                <input id="enroll" type="number" placeholder="1234567305477760" class="outline-[green] border-[1px] text-[10px] lg:text-[12px] font-[400] rounded-[4px] p-[8px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px] lg:mt-[10px] ">
+                <span id="message_enroll" class="text-[10px] md:text-[12px] hidden text-[red]">Enroll number is required</span>
             </label>
             
             <label for="photo">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Upload an URL img</p> 
-                <input id="photo" type="text" placeholder="URL" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_photo" class="text-[12px] hidden text-[red]">Photo is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  mt-[20px]">Upload an URL img</p> 
+                <input id="photo" type="text" placeholder="URL" class="outline-[green] border-[1px] text-[10px] lg:text-[12px] font-[400] rounded-[4px] p-[8px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px] lg:mt-[10px] ">
+                <span id="message_photo" class="text-[10px] md:text-[12px] hidden text-[red]">Photo is required</span>
             </label>
 
             <button class="uppercase py-[14px] w-full bg-[#FEAF00] font-[500] text-[14px] leading-[100%] rounded-[4px] text-white cursor-pointer mt-[30px] mb-[11px]">Submit</button>
@@ -99,80 +102,77 @@
     <!-- add student end -->
 
     <!-- edit student info start -->
-    <div id="overlayEdit" class="overlay bg-[rgba(0,0,0, 1)] hidden absolute z-[101] t-0 l-0 r-0 b-0 w-full h-full flex justify-center items-center backdrop-blur-[3px]">
-        <form id="formEdit" class="max-w-[475px] w-full  py-[44px]  px-[30px]  rounded-[20px] bg-[#F2EAE1] shadow-xl">
-            <h2 class="uppercase text-[22px] font-[600] leading-[100%] text-center mb-[20px]">Edit student details</h2>
+    <div id="overlayEdit" class="overlay bg-[rgba(0,0,0, 1)] hidden fixed z-[101] top-0 w-full h-[100vh] flex justify-center items-center backdrop-blur-[3px]">
+        <form id="formEdit" class="top-[100px] w-[300px] lg:w-[475px] py-[20px] lg:py-[44px] px-[14px] lg:px-[30px]  rounded-[20px] bg-[#fff] " style="box-shadow: 0px 10px 10px 4px rgba(0, 0, 0, 0.6);" >
+            <h2 class="uppercase text-[16px] lg:text-[22px] font-[600] leading-[100%] text-center mb-[10px] lg:mb-[20px]">Edit student details</h2>
             <label for="name">
-              <span class="font-[500] text-[14px] leading-[100%]  ">Edit name</span> 
-              <input id="name" type="text" placeholder="name" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px]">
-              <p id="message_nameEdit" class="text-[12px] mt-1 hidden text-[red]">Name is required</p>
+              <span class="font-[500] text-[10px] lg:text-[14px] leading-[100%]  ">Edit name</span> 
+              <input id="name" type="text" placeholder="name" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[10px] lg:p-[15px] w-full border-solid border-[#555] mt-[5px]">
+              <p id="message_nameEdit" class="text-[10px] lg:text-[12px] mt-1 hidden text-[red]">Name is required</p>
             </label>
 
             <label for="email">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Edit email</p> 
-                <input id="email" type="email" placeholder="user@example.com" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_emailEdit" class="text-[12px] hidden text-[red]">Email is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%] mt-[10px] lg:mt-[20px]">Edit email</p> 
+                <input id="email" type="email" placeholder="user@example.com" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[10px] lg:p-[15px] w-full border-solid border-[#555] mt-[10px] ">
+                <span id="message_emailEdit" class="text-[10px] lg:text-[12px] hidden text-[red]">Email is required</span>
             </label>
 
             <label for="phone">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Edit phone number</p> 
-                <input id="phone" type="tel" placeholder="+998946092401" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_phoneEdit" class="text-[12px] hidden text-[red]">Phone number is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%] mt-[10px] lg:mt-[20px]">Edit phone number</p> 
+                <input id="phone" type="tel" placeholder="+998946092401" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[10px] lg:p-[15px] w-full border-solid border-[#555] mt-[10px] ">
+                <span id="message_phoneEdit" class="text-[10px] lg:text-[12px] hidden text-[red]">Phone number is required</span>
             </label>
 
             <label for="enroll">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Edit enroll number</p> 
-                <input id="enroll" type="number" placeholder="1234567305477760" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_enrollEdit" class="text-[12px] hidden text-[red]">Enroll number is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%] mt-[10px] lg:mt-[20px]">Edit enroll number</p> 
+                <input id="enroll" type="number" placeholder="1234567305477760" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[10px] lg:p-[15px] w-full border-solid border-[#555] mt-[10px] ">
+                <span id="message_enrollEdit" class="text-[10px] lg:text-[12px] hidden text-[red]">Enroll number is required</span>
             </label>
             
             <label for="photo">
-                <p class="font-[500] text-[14px] leading-[100%]  mt-[20px]">Upload an URL img</p> 
-                <input id="photo" type="text" placeholder="URL" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[15px] w-full border-solid border-[#555] mt-[10px] ">
-                <span id="message_photoEdit" class="text-[12px] hidden text-[red]">Photo is required</span>
+                <p class="font-[500] text-[10px] lg:text-[14px] leading-[100%] mt-[10px] lg:mt-[20px]">Upload an URL img</p> 
+                <input id="photo" type="text" placeholder="URL" class="outline-[green] border-[1px] text-[12px] font-[400] rounded-[4px] p-[10px] lg:p-[15px] w-full border-solid border-[#555] mt-[10px] ">
+                <span id="message_photoEdit" class="text-[10px] lg:text-[12px] hidden text-[red]">Photo is required</span>
             </label>
 
-            <button class="uppercase py-[14px] w-full bg-[#FEAF00] font-[500] text-[14px] leading-[100%] rounded-[4px] text-white cursor-pointer mt-[30px] mb-[11px]">Submit</button>
+            <button class="uppercase py-[14px] w-full bg-[#FEAF00] font-[500] text-[14px] leading-[100%] rounded-[4px] text-white cursor-pointer mt-[30px] mb-[11px] btn">Submit</button>
         </form>
     </div> 
     <!-- edit student info end -->
 
     <!-- students lists start -->
-    <section id="student_box" class="bg-[#F8F8F8] min-h-[100vh] overflow-y-scroll w-[calc(100vw-270px)] ml-auto px-[30px] pt-[64px] ">
+    <section id="student_box" class="bg-[#F8F8F8] min-h-[100vh] overflow-y-scroll w-[calc(100vw-80px)] lg:w-[calc(100vw-270px)] ml-auto px-[30px] pt-[64px] ">
         <div class="flex justify-between items-center py-[12px] border-b-[1px] border-[#E5E5E5] ">
-            <h1 class="text-[22px] leading-[100%] font-[700] ">Students List</h1>
-            <div class="flex gap-[30px]">
-                <ul class="w-[100px] h-full overflow-hidden rounded-[4px] bg-[#F2EAE1] translate-x-[10px]">
-                    <li class="text-center hover:bg-[#FEAF00] text-[10px] px-2 py-1 cursor-pointer">Sort by names</li><hr>
-                    <li class="text-center hover:bg-[#FEAF00] text-[10px] px-2 py-1 cursor-pointer">Sort by date</li>
-                </ul>
-                <div class="hover:bg-[#F2EAE1] my-auto w-[30px] rounded-full h-[30px] flex items-center justify-center">
+            <h1 class="text-[15px] md:text-[22px] leading-[100%] font-[700] ">Students List</h1>
+            <div class="flex gap-[10px] md:gap-[30px]">
+                <div id="sort_btn" class="hover:bg-[#F2EAE1] my-auto w-[30px] rounded-full h-[30px] flex items-center justify-center">
                     <img src="/images/sort.svg" alt="sort" class="cursor-pointer ">
                 </div>
-                <button id="add_student" class="py-[13px] flex text-white px-[26px] bg-[#FEAF00] rounded-[4px] cursor-pointer btn">
+                <button id="add_student" class=" py-[5px] md:py-[13px] flex text-white items-center px-[15px] md:px-[26px] bg-[#FEAF00] rounded-[4px] cursor-pointer btn text-[12px]">
                     <span class="z-[20]">ADD NEW STUDENT</span>
                 </button>
             </div>
         </div>
         <div class="overflow-x-auto overflow-y-hidden min-h-[calc(100vh-145px)]">
-            <table class="border-separate  border-spacing-y-[10px] w-full ">
+            <table class="border-separate relative  border-spacing-y-[10px] w-full ">
                 <thead>
                     <tr>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%] ml-[13px] py-[15px]"></th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Name</th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Email</th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Phone</th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Enroll Number</th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Date admission</th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
-                        <th class="text-start  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                        <th class="text-start w-[100px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%] ml-[13px] py-[15px] "></th>
+                        <th class="text-start min-w-[130px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Name</th>
+                        <th class="text-start min-w-[200px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Email</th>
+                        <th class="text-start min-w-[120px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Phone</th>
+                        <th class="text-start min-w-[100px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Enroll Number</th>
+                        <th class="text-start min-w-[100px]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]">Date admission</th>
+                        <th class="text-start min-w-[]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                        <th class="text-start min-w-[]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
+                        <th class="text-start min-w-[]  text-[12px] font-[600] text-[#ACACAC] leading-[100%]"></th>
                     </tr>
                 </thead>
-                <tbody id="user_lists" class="w-full relative">
-                    
+                <tbody id="user_lists" class="w-[100px] h-full relative">
+                    <div class="w-[100px] md:w-[300px]  lg:w-[400px] z-[-123] left-[45%] absolute top-[200px] flex justify-center" id="notFound">
+                        <img src="/images/search-not.png" alt="no data" class="w-full">
+                    </div>
                 </tbody>
-               
             </table>
         </div>
     </section > 

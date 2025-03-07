@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="icon" href="/images/profile-picture.png">
+    <title>Student</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="relative overflow-x-hidden">
+    <!-- header start -->
+    <header class="bg-[#F2EAE1] py-[20px] px-[50px] flex justify-end items-center fixed w-full z-[90]">
+        <button class="ml-[27px] " >
+            <div class="hover:bg-[#888] my-auto w-[25px] rounded-full h-[25px] flex items-center justify-center">
+                <img src="/images/bell.svg" class="cursor-pointer" alt="bell">
+            </div>
+        </button>
+    </header>
+    <!-- header end -->
+
+    <!-- sidebar start -->
+    <section id="sidebar" class="fixed w-[80px] lg:w-[270px] bg-[#F2EAE1] h-[100vh] top-[0] pt-[18px] flex flex-col items-center text-center z-[99]" >
+        <h1 id="siderbar_header" class="text-[10px] lg:text-[20px] border-l-[4px] translate-x-[-20px] border-[#F8D442] pl-[20px] leading-[100%] font-[700] mb-[30px] ml-[15px] lg:ml-0 lg:mb-[54px]">Admin Students</h1>
+        <img src="/images/to-left.svg" alt="to left btn" class="absolute right-[-30px] cursor-pointer rotate-[180deg] lg:rotate-[0deg]" id="toLeft">
+        <div >
+            <div class="relative">
+                <div id="profilePicture" >
+                </div> 
+                <div id="setProfilePicture" class="cursor-pointer hidden lg:block">
+                    <img  id="uploadBtn" src="/images/change-profile-picture.png" alt="change photo" class="w-[30px] absolute bottom-[13px] right-[13px] ">
+                    <input id="fileInput" type="file" class="w-[30px] w-[30px] absolute bottom-[13px] right-[13px] cursor-pointer opacity-[0]">
+                </div>
+            </div>
+            <h2 id="user_name" class="text-center text-[10px] lg:text-[17px] font-[700] leading-[100%] mb-[10px]">Karthi Madesh</h2>
+            <h2 class="text-center text-[#FEAF00] text-[10px] lg:text-[14px] font-[500] leading-[100%] mb-[10px] lg:mb-[63px]" id="admin_text">Admin</h2>
+            <button class="flex py-[12px] bg-[#FEAF00] rounded-[4px] items-center gap-[15px] justify-center w-[40px] lg:w-full mx-auto cursor-pointer btn" id="hat_btn">
+                <img src="/images/hat.svg" alt="hat" class="z-[20]">
+                <span class="z-[20] hidden  lg:flex" id="hat_text">Students</span>
+            </button>
+        </div>
+        <div class="flex absolute bottom-[33px] gap-[23px]">
+            <p class="text-[14px] font-[500] leading-[100%] lg:flex hidden" id="logout_text">Logout</p>
+            <a href="/signin/signin.html" id="logout">
+                <img src="/images/sign-out.svg" class="cursor-pointer" alt="logout">
+            </a>
+        </div>
+    </section>
+    <!-- sidebar end -->
+
+    <!-- students lists start -->
+    <section id="student_box" class="bg-[#F8F8F8] min-h-[100vh] overflow-y-scroll w-[calc(100vw-80px)] lg:w-[calc(100vw-270px)] ml-auto px-[30px] pt-[64px] ">
+        <div class="flex justify-between items-center py-[20px] border-b-[1px] border-[#E5E5E5] ">
+            <h1 class="text-[15px] md:text-[22px] leading-[100%] font-[700] ">Students List</h1>
+        </div>
+        <div class="bg-[#fff] md:w-[500px] my-[30px] lg:w-[592px] py-[20px] md:h-[391px] flex-col md:flex-row flex gap-[50px] rounded-[8px] mt-[41px] relative" >
+            <div id="profileImage" class="w-[209px] h-[216px] mt-[28px] ml-[22px] mr-[22px] md:mr-[0]">
+                <img  src="/images/profile.svg" class="rounded-[10px]  " alt="profile image">
+            </div>
+            <div class="flex flex-col gap-[15px] mt-[10px] ml-[22px] md:mt-[50px]">
+                <div>
+                    <p class="text-[12px] text-[#ACACAC] font-[600] leading-[100%]">Name</p>
+                    <p id="studentName" class="text-[14px] font-[400]">Karthi</p>
+                </div>
+                <div>
+                    <p class="text-[12px] text-[#ACACAC] font-[600] leading-[100%]">Email</p>
+                    <p id="studentEmail" class="text-[14px] font-[400]">karthi@gmmail.com</p>
+                </div>
+                <div>
+                    <p class="text-[12px] text-[#ACACAC] font-[600] leading-[100%]">Phone</p>
+                    <p id="studentPhone" class="text-[14px] font-[400]">7305477760</p>
+                </div>
+                <div>
+                    <p class="text-[12px] text-[#ACACAC] font-[600] leading-[100%]">Date admission</p>
+                    <p id="studentDate" class="text-[14px] font-[400]">08-Dec, 2021</p>
+                </div>
+            </div>
+            <img src="/images/student-thumb.svg" alt="scroll" class="absolute top-[15px] right-[15px]">
+        </div>
+    </section > 
+    <!-- students lists end -->
+
+    <script src="student.js"></script>
+  </body>
+</html>
