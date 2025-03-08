@@ -7,9 +7,7 @@ let userData = JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localSt
 let selectUser = JSON.parse(localStorage.getItem('selectUser'));
 let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
 
-
-
-// ==========================change img to profile========================== 
+// ========================== Change img to profile========================== 
 fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     
@@ -37,7 +35,8 @@ function setImage(url) {
     setRenderImage()
 }
 
-// ===========================render userData=======================
+// ========================== Render userdata ========================== 
+
 function setRenderImage() {
     profilePicture.innerHTML = `
         <img id="preview" src=${selectUser.profileImg} alt="user img" class="rounded-full mb-[20px] w-[60px] h-[60px] lg:w-[200px] lg:h-[200px] object-cover mx-auto">
@@ -52,7 +51,7 @@ logOut.addEventListener("click", () => {
     window.close();
 });
 
-//=================== sidebar to responsive====================
+// ========================== Sidebar to responsive ================== 
 
 const toLeft = document.getElementById('toLeft');
 const sidebar = document.getElementById('sidebar');
@@ -104,18 +103,20 @@ toLeft.addEventListener('click', () => {
     }
 })
 
-// =========================render user data=============================
+
+// ========================= Render user data =============================
 const profileImage = document.getElementById('profileImage');
 const studentName = document.getElementById('studentName');
 const studentEmail = document.getElementById('studentEmail');
 const studentPhone = document.getElementById('studentPhone');
 const studentDate = document.getElementById('studentDate');
 
-const studentData = JSON.parse(sessionStorage.getItem('selectStudent'));
-console.log(studentData)
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id")
+const studentData = JSON.parse(localStorage.getItem('students'));
 
 profileImage.innerHTML = `
-    <img  src=${studentData[0].photo} class="object-cover h-full w-full rounded-[10px]" alt="profile image">
+    <img  src=${studentData[id].photo} class="object-cover h-full w-full rounded-[10px]" alt="profile image">
 `
 studentName.innerHTML = studentData[0].name;
 studentEmail.innerHTML = studentData[0].email;

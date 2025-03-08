@@ -15,7 +15,7 @@ let userData = JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localSt
 let selectUser = JSON.parse(localStorage.getItem('selectUser'));
 
 
-//================ Clock start ============================= 
+//======================== Clock start ============================= 
 function setTime() {
     let now = new Date();
 
@@ -36,8 +36,7 @@ function setTime() {
 }
 setInterval(() => setTime(), 1000) 
 
-
-// ========================== change img to profile============================== 
+//======================== Change img to profile ============================= 
 fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     
@@ -71,7 +70,7 @@ function setRenderImage() {
     `
 }
 
-// ================================Render userData ====================================
+//==================================== Render userData ============================= 
 setRenderImage()
 
 userName.innerHTML = `${selectUser.firstName} ${selectUser.lastName}`
@@ -132,7 +131,7 @@ toLeft.addEventListener('click', () => {
     }
 })
 
-//========================= add student ==================================
+//========================= Add student ==================================
 const messageName = document.getElementById('message_name');
 const messageEmail = document.getElementById('message_email');
 const messagePhone = document.getElementById('message_phone');
@@ -140,7 +139,6 @@ const messageEnroll = document.getElementById('message_enroll');
 const messagePhoto = document.getElementById('message_photo');
 const userLists = document.getElementById('user_lists');
 let editId;
-
 
 let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
 
@@ -186,7 +184,21 @@ function setStudentData() {
 }
 setStudentData()
 
-// create strudent form submit event
+//============================= create strudent form submit event ================
+
+// if else code functions input length function 
+function checkValue(inputName, message) {
+    if(!inputName.value.trim().length) {
+        message.classList.remove('hidden');
+        inputName.classList.add('border-[red]')
+        setTimeout(() => {
+            message.classList.add('hidden');
+            inputName.classList.remove('border-[red]')
+        }, 3000)
+    } 
+}
+
+
 formCreate.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -196,46 +208,12 @@ formCreate.addEventListener('submit', (e) => {
     let enrollCreate = formCreate.enroll;
     let photoCreate = formCreate.photo;
 
-    if(!nameCreate.value.trim().length) {
-        messageName.classList.remove('hidden');
-        nameCreate.classList.add('border-[red]')
-        setTimeout(() => {
-            messageName.classList.add('hidden');
-            nameCreate.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!emailCreate.value.trim().length) {
-        messageEmail.classList.remove('hidden');
-        emailCreate.classList.add('border-[red]')
-        setTimeout(() => {
-            messageEmail.classList.add('hidden');
-            emailCreate.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!phoneCreate.value.trim().length) {
-        messagePhone.classList.remove('hidden');
-        phoneCreate.classList.add('border-[red]')
-        setTimeout(() => {
-            messagePhone.classList.add('hidden');
-            phoneCreate.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!enrollCreate.value.trim().length) {
-        messageEnroll.classList.remove('hidden');
-        enrollCreate.classList.add('border-[red]')
-        setTimeout(() => {
-            messageEnroll.classList.add('hidden');
-            enrollCreate.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!photoCreate.value.trim().length) {
-        messagePhoto.classList.remove('hidden');
-        photoCreate.classList.add('border-[red]')
-        setTimeout(() => {
-            messagePhoto.classList.add('hidden');
-            photoCreate.classList.remove('border-[red]')
-        }, 3000)
-    }  
+    checkValue(nameCreate, messageName)
+    checkValue(emailCreate, messageEmail)
+    checkValue(phoneCreate, messagePhone)
+    checkValue(enrollCreate, messageEnroll)
+    checkValue(photoCreate, messagePhoto)
+
     if(nameCreate.value.trim().length && emailCreate.value.trim().length && phoneCreate.value.trim().length && enrollCreate.value.trim().length && photoCreate.value.trim().length) {
         const user = {
             name: nameCreate.value,
@@ -253,7 +231,7 @@ formCreate.addEventListener('submit', (e) => {
     }
 })
 
-//======================== Delete student ==================================
+//==================================== Delete student ==================================
 function deleteStudent(id) {
     const deletedArr = students.filter((user, i) => {
         return i != id
@@ -264,73 +242,37 @@ function deleteStudent(id) {
     loadNoData()
 }
 
-// =================================== editStudent==================================== 
+// =================================== EditStudent ==================================== 
 const formEdit = document.getElementById('formEdit');
 const overlayEdit = document.getElementById('overlayEdit');
+// form inputs 
 const nameEdit = document.querySelector('#formEdit #name');
 const emailEdit = document.querySelector('#formEdit #email');
 const phoneEdit = document.querySelector('#formEdit #phone');
 const enrollEdit = document.querySelector('#formEdit #enroll');
 const photoEdit = document.querySelector('#formEdit #photo');
+// error message dom
 const messageNameEdit = document.getElementById('message_nameEdit');
 const messageEmailEdit = document.getElementById('message_emailEdit');
 const messagePhoneEdit = document.getElementById('message_phoneEdit');
 const messageEnrollEdit = document.getElementById('message_enrollEdit');
 const messagephotoEdit = document.getElementById('message_photoEdit');
 
-addStudentBtn.addEventListener('click', () => {
-})
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('overlay')) {
         overlayEdit.classList.add('hidden')
     }
 })
 
-
-
 formEdit.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    if(!nameEdit.value.trim().length) {
-        messageNameEdit.classList.remove('hidden');
-        nameEdit.classList.add('border-[red]')
-        setTimeout(() => {
-            messageNameEdit.classList.add('hidden');
-            nameEdit.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!emailEdit.value.trim().length) {
-        messageEmailEdit.classList.remove('hidden');
-        emailEdit.classList.add('border-[red]')
-        setTimeout(() => {
-            messageEmailEdit.classList.add('hidden');
-            emailEdit.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!phoneEdit.value.trim().length) {
-        messagePhoneEdit.classList.remove('hidden');
-        phoneEdit.classList.add('border-[red]')
-        setTimeout(() => {
-            messagePhoneEdit.classList.add('hidden');
-            phoneEdit.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!enrollEdit.value.trim().length) {
-        messageEnrollEdit.classList.remove('hidden');
-        enrollEdit.classList.add('border-[red]')
-        setTimeout(() => {
-            messageEnrollEdit.classList.add('hidden');
-            enrollEdit.classList.remove('border-[red]')
-        }, 3000)
-    } 
-    if(!photoEdit.value.trim().length) {
-        messagephotoEdit.classList.remove('hidden');
-        photoEdit.classList.add('border-[red]')
-        setTimeout(() => {
-            messagephotoEdit.classList.add('hidden');
-            photoEdit.classList.remove('border-[red]')
-        }, 3000)
-    }  
+    checkValue(nameEdit, messageNameEdit)
+    checkValue(emailEdit, messageEmailEdit)
+    checkValue(phoneEdit, messagePhoneEdit)
+    checkValue(enrollEdit, messageEnrollEdit)
+    checkValue(photoEdit, messagephotoEdit)
+
     if(nameEdit.value.trim().length && emailEdit.value.trim().length && phoneEdit.value.trim().length && enrollEdit.value.trim().length && photoEdit.value.trim().length) {
         const user = {
             name: nameEdit.value,
@@ -370,7 +312,7 @@ function editStudent(id) {
     editId = id
 }
 
-// =================================== sort students========================================
+// ======================================== sort students========================================
 const sortBtn = document.getElementById('sort_btn');
 
 sortBtn.addEventListener('click', ()=> {
@@ -381,8 +323,8 @@ sortBtn.addEventListener('click', ()=> {
 })
 
 //========================================= search students========================================
-
 const searchInput = document.getElementById('search_input');
+
 searchInput.addEventListener('input', (e) => {
     document.querySelectorAll('tbody tr #searchName').forEach((item, i) => {
         if(item.textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
@@ -405,15 +347,10 @@ searchInput.addEventListener('input', (e) => {
 //================================ go to student page ================================
 
 function goStudentPage(id) {
-    const selectedStudent = students.filter((item, i) => {
-        return i == id;
-    })
-    sessionStorage.setItem('selectStudent', JSON.stringify(selectedStudent))
-    window.location.href = '/student/student.html'
+    window.location.href = `/student/student.html?id=${id}`
 }
 
-
-// no data ? get image to screen
+//================================ No data? Get image to screen =====================
 function loadNoData() {
     if(!students.length) {
         userLists.innerHTML += `
@@ -426,3 +363,4 @@ function loadNoData() {
 document.addEventListener('DOMContentLoaded', () => {
     loadNoData()
 })
+

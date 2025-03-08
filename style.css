@@ -45,7 +45,3 @@ body {
 .btn:active {
   transform: translateY(-7px);
 }
-
-#student_box {
-  transition: none;
-}
